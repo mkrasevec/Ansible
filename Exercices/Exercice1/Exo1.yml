@@ -2,21 +2,25 @@
 - hosts: all
   become: true
   tasks:
-  - name: install git
+  - name: install apache2
     apt:
       name:
         - apache2
       update_cache: yes
 
-  - name: Fix 'support_tools' permissions
-    file: path=/var/www/html state=directory recurse=yes mode=0777
+  - name: change folder rights
+    file: path=/var/www/html state=directory mode=0755
 
   - name: file configuration copy
     copy: 
       src: ./index.html
-      dest: /var/www/html
+      dest: /var/www/html/
   
-  - name: Lancement apache2
+  - name: start apache2 service
     shell:
       cmd: systemctl start apache2
+  # service:
+    # name: apache2
+    # state: started
+    # enabled: yes
 
