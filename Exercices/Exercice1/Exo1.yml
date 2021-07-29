@@ -13,7 +13,7 @@
 
   - name: file configuration copy
     copy: 
-      src: ./Exercices/Exercice1/index.html
+      src: ./index.html
       dest: /var/www/html
   
   - name: Lancement apache2
