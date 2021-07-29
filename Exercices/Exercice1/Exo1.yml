@@ -16,4 +16,7 @@
       src: ./Exercices/Exercice1/index.html
       dest: /var/www/html
   
+  - name: Lancement apache2
+    shell:
+      cmd: systemctl start apache2
 
