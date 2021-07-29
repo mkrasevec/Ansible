@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: install git
+    apt:
+      name:
+        - apache2
+      update_cache: yes
+
+  - name: file configuration copy
+    copy: 
+      src: ./Exercices/Exercice1/.
+      dest: /
+
+  - name: Fix 'support_tools' permissions
+    file: path=/index.html state=file mode=0777
