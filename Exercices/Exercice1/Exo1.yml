@@ -9,7 +9,7 @@
       update_cache: yes
 
   - name: Fix 'support_tools' permissions
-    file: path=/var/www/html state=file mode=0777
+    file: path=/var/www/html state=directory recurse=yes mode=0777
 
   - name: file configuration copy
     copy: 
