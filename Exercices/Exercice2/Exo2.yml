@@ -48,21 +48,27 @@
   
 
   # construction des images
-  - name: Build image Avote
-    docker_image:
-      name: Avote
-      path: /DockerSources/vote/
-      push: yes
-  - name: Build image Aresult
-    docker_image:
-      name: Aresult
-      path: /DockerSources/result/
-      push: yes
-  - name: Build image Aworker
-    docker_image:
-      name: Aworker
-      path: /DockerSources/worker/
-      push: yes
+  - name: build images
+    command: docker build -t {{item}} /DockerSources/{{item}}/
+    loop:
+      - vote
+      - worker
+      - result
+  # - name: Build image Avote
+  #   docker_image:
+  #     name: Avote
+  #     path: /DockerSources/vote/
+  #     push: yes
+  # - name: Build image Aresult
+  #   docker_image:
+  #     name: Aresult
+  #     path: /DockerSources/result/
+  #     push: yes
+  # - name: Build image Aworker
+  #   docker_image:
+  #     name: Aworker
+  #     path: /DockerSources/worker/
+  #     push: yes
 
 
   - name: Suppression code source
