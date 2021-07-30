@@ -53,7 +53,7 @@
 
   # construction des images
   - name: build images
-    command: docker build -t {{item}} /DockerSources/TPDocker/{{item}}/
+    command: docker build -t {{item}} /DockerSources/TPDocker/{{item}}/.
     loop:
       - vote
       - worker
