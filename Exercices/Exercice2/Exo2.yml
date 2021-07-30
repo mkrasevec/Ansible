@@ -14,11 +14,12 @@
 
   # Ajouter la clé gpg pour la sécurité des échanges avec le serveur des packages docker
   - name: ajout de la cle gpg
-    command: curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    apt_key:
+      url: https://download.docker.com/linux/debian/gpg
   
   # Ajouter le repos pour chercher les packages de docker
   - name: Ajout de l'adresse du repos pour les packages docker de debian
-    apt-repository:
+    apt_repository:
       repo: deb https://download.docker.com/linux/debian bionic stable
 
 
