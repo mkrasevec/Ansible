@@ -1,0 +1,82 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Installation des packages de base pour docker
+    apt:
+      name:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg
+        - lsb-release
+
+  # Ajouter la clé gpg pour la sécurité des échanges avec le serveur des packages docker
+  - name: ajout de la cle gpg
+    apt-key:
+      url: https://download.docker.com/linux/debian/gpg
+  
+  # Ajouter le repos pour chercher les packages de docker
+  - name: Ajout de l'adresse du repos pour les packages docker de debian
+    apt-repository:
+      repo: deb https://download.docker.com/linux/debian bionic stable
+
+
+  # Installation des composants docker
+  - name: install docker components
+    apt:
+      name:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+
+  # démarrage du service
+  - name: start docker service
+    service:
+      name: docker start
+      state: started
+      enabled: true
+
+
+
+  # # # copie des fichies du TPvote
+  # # - name: file configuration copy
+  # #   copy: 
+  # #     src: ./../../Prof/
+  # #     dest: /DockerSources/
+  
+
+  # # # construction des images
+  # # - name: Build image Avote
+  # #   docker_image:
+  # #     name: Avote
+  # #     push: yes
+  # #     path: ./../../Prof/TPDocker/vote
+  # # - name: Build image Aresult
+  # #   docker_image:
+  # #     name: Aresult
+  # #     push: yes
+  # #     path: ./../../Prof/TPDocker/result
+  # # - name: Build image Aworker
+  # #   docker_image:
+  # #     name: Aworker
+  # #     push: yes
+  # #     path: ./../../Prof/TPDocker/worker
+
+
+  # # - name: Suppression code source
+  # #   command: rm -rf /DockerSources
+
+  # - name: Build image result
+  #   command: docker build -t Image_result ./../../Prof/TPDocker/result
+  # - name: Build image vote
+  #   command: docker build -t Image_result ./../../Prof/TPDocker/vote
+  # - name: Build image worker
+  #   command: docker build -t Image_result ./../../Prof/TPDocker/worker
+
+
+  # service:
+    # name: apache2
+    # state: started
+    # enabled: yes
+
