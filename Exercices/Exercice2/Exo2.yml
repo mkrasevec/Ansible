@@ -47,7 +47,7 @@
   # copie des fichies du TPvote
   - name: file configuration copy
     copy: 
-      src: ./../../Prof/
+      src: ./../../Prof/TPDocker/
       dest: /DockerSources/
       recurse: yes
   
