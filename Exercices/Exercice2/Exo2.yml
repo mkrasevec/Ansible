@@ -49,6 +49,7 @@
     copy: 
       src: ./../../Prof/
       dest: /DockerSources/
+      recurse: yes
   
 
   # construction des images
