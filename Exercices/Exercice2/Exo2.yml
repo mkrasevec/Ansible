@@ -38,7 +38,11 @@
   #     state: started
   #     enabled: true
 
-
+  - name: create folder
+    file:
+        path: /DockerSources
+        state: directory
+        mode: '0755'
 
   # copie des fichies du TPvote
   - name: file configuration copy
