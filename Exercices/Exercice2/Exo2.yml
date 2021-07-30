@@ -52,17 +52,17 @@
     docker_image:
       name: Avote
       path: /DockerSources/vote/
-      source: build
+      push: yes
   - name: Build image Aresult
     docker_image:
       name: Aresult
       path: /DockerSources/result/
-      source: build
+      push: yes
   - name: Build image Aworker
     docker_image:
       name: Aworker
       path: /DockerSources/worker/
-      source: build
+      push: yes
 
 
   - name: Suppression code source
