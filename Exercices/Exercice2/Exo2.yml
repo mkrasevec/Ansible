@@ -51,18 +51,18 @@
   - name: Build image Avote
     docker_image:
       name: Avote
-      build:
-        path: /DockerSources/vote/
+      path: /DockerSources/vote/
+      source: build
   - name: Build image Aresult
     docker_image:
       name: Aresult
-      build:
-        path: /DockerSources/result/
+      path: /DockerSources/result/
+      source: build
   - name: Build image Aworker
     docker_image:
       name: Aworker
-      build:
-        path: /DockerSources/worker/
+      path: /DockerSources/worker/
+      source: build
 
 
   - name: Suppression code source
